@@ -1,4 +1,4 @@
-:root {
+  :root {
     --bg-color:  #dff1e7;
     --form-color: #ffffff;
     --small-text-color: #87a3a6;
@@ -22,17 +22,17 @@
 body {
     background-color: var(--bg-color);
     min-height: 100vh;
-    font: var(--main-font);
+    font-family: var(--main-font);
     color: var(--small-text-color);
 }
 
 
 /* Layout */
 .container {
+    min-height: 100vh;
     display: grid;
     place-items: center;
-    min-height: 100vh;
-    padding: 32px, 16px;
+    padding: 32px 16px;
 }
 
 .form__class {
@@ -48,8 +48,20 @@ body {
     border: 1.5px solid var(--border-color);
     border-radius: 6px;
     padding: 14px;
+    outline: none;
     font-size: 16px;
     margin-top: 6px;
+}
+
+.text__area {
+    height: 200px;
+    resize: vertical;
+}
+
+
+.input:hover{
+    cursor: pointer;
+    border-color: #006A64;
 }
 
 
@@ -58,7 +70,6 @@ body {
 }
 
 
-/* focus states */
 /* name grid */
 .name_grid {
     display: grid;
@@ -74,9 +85,6 @@ body {
     margin-bottom: 6px;
 }
 
-#radio {
-    margin-top: 6px;
-}
 
 .radio__items {
     border: 1.5px solid var(--border-color);
@@ -85,15 +93,25 @@ body {
     display: flex;
     gap: 12px;
     cursor: pointer;
-    /* background: #ffffff; */
+    background: #ffffff;
 }
 
-/* Accent and all */
+.radio__items, .checkbox input{
+    accent-color: #006A64;
+}
+
+.radio__items:has(input:checked) {
+    border-color: #006A64;
+    background-color: var(--bg-color);
+}
 
 fieldset {
     border: none;
 }
 
+.checkbox {
+    cursor: pointer;
+}
 .btn {
     width: 100%;
     background: #006A64;
@@ -112,6 +130,35 @@ fieldset {
     color: var(--bg-text-color);
 }
 
+/* Success state */
+.success {
+    background: #23383a;
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 14px 16px;
+    border-radius: 8px;
+    color: #fff;
+    display: none;
+}
+.success.is-show{
+    display: block;
+}
+
+/* Error state */
+.error {
+    color: var(--error);
+    font-size: 12px;
+    min-height: 16px;
+    margin-top: 6px;
+}
+
+.general.is-error .input,
+.general.is-error .text__area {
+    border-color: var(--error);
+}
+
 
 
 /* media queries */
@@ -123,7 +170,8 @@ fieldset {
     .radio__grid {
         grid-template-columns: 1fr 1fr;
     }
+
+    .text__area{
+        height: 150px;
+    }
 }
-
-
-
