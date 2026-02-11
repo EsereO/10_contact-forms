@@ -6,6 +6,9 @@
 
   <link rel="stylesheet" href="style.css">
 
+  <link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+
+
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
   
   <title>Contact form</title>
@@ -13,6 +16,11 @@
 
 </head>
 <body>
+
+  <div class="success" id="successMessage">     
+    <strong>Message Sent!</strong><br>
+    <span>Thanks for completing the form. We'll be in touch soon!</span>
+  </div>
 
   <main class="container">
     <form class="form__class" id="contactForm" novalidate>
@@ -22,13 +30,13 @@
       <!-- Names Section-->
        <div class="name_grid">
         <div class="general" data-field="firstName">
-          <label for="firstName">First name <span class="asterix">*</span></label>
+          <label class="label"  for="firstName">First name *</label>
           <input class="input" type="text" id="firstName"  name="firstName">
           <p class="error" id="errorFirstName"></p>
         </div>
 
         <div class="general" data-field="lastName">
-          <label for="lastName">Last name <span class="asterix">*</span></label>
+          <label class="label" for="lastName">Last name *</label>
           <input class="input" type="text" id="lastName"  name="lastName">
           <p class="error" id="errorLastName"></p>
         </div>
@@ -36,35 +44,35 @@
 
        <!-- Email section -->
         <div class="general" data-field="email">
-          <label for="email">Email Address <span class="asterix">*</span></label>
+          <label class="label" for="email">Email Address *</label>
           <input class="input" type="email" id="email" name="email">
           <p class="error" id="errorEmail"></p>
           
         </div>
 
-        <!-- Query Section -->
+        <!-- Query Section     Note: might come make a correction here -->
          <fieldset class="general" data-field="queryType">
-          <legend class="query">Query Type <span class="asterix">*</span></legend>
+          <legend class="label query">Query Type *</legend>
 
-          <div class="radio__grid">
-            <label class="radio__items" for="">
-              <input type="radio" name="query" value="general">
-              <span>General Enquiry</span>
-            </label>
-    
-            <label class="radio__items" for="">
-              <input type="radio" name="query" value="support">
-              <span>Support Request</span>
-            </label>
-          </div>
+            <div class="radio__grid" id="">
+              <label class="radio__items input" for="">
+                <input type="radio" name="query" value="general">
+                <span>General Enquiry</span>
+              </label>
+      
+              <label class="radio__items input" for="">
+                <input type="radio" name="query" value="support">
+                <span>Support Request</span>
+              </label>
+            </div>
 
           <p class="error" id="errorQuery"></p>
         </fieldset>
 
         <!-- Message section -->
          <div class="general" data-field="messageInput">
-            <label for="messageInput">Message <span class="asterix">*</span></label>
-            <textarea class="text__area" id="messageInput" name="message" ></textarea>
+            <label class="label" for="messageInput">Message *</label>
+            <textarea class="text__area input" id="messageInput" name="message" ></textarea>
             <p class="error" id="errorMessage"></p>
          </div>
 
@@ -72,50 +80,16 @@
           <div class="general" data-field="consent">
             <label class="checkbox" for="consent">
               <input type="checkbox" id="consent" name="consent">
-              <span>I consent to being contacted by the team <span class="asterix">*</span></span>
+              <span>I consent to being contacted by the team *</span>
             </label>
 
-            <p clss="error" id="errorConsent"></p>
+            <p class="error" id="errorConsent"></p>
           </div>
 
-          <button class="btn" type="submit">Submit</button>
+          <button class="btn general" type="submit">Submit</button>
     </form>
   </main>
   <script src="script.js"></script>
 </body>
 </html>
-
-<!-- Contact Us
-
-  First Name
-  This field is required
-
-  Last Name
-  This field is required
-
-  Email Address
-  Please enter a valid email address
-  This field is required
-
-  Query Type
-  General Enquiry
-  Support Request
-  Please select a query type
-
-  Message
-  This field is required
-
-  I consent to being contacted by the team
-  To submit this form, please consent to being contacted
-
-  Submit
-
-  Message Sent!
-  Thanks for completing the form. We'll be in touch soon! -->
-
-   
-  <!-- <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>. 
-    Coded by <a href="#">Esere Obodo</a>.
-  </div> -->
 
