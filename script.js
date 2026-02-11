@@ -1,5 +1,8 @@
 const form = document.getElementById("contactForm");
 
+const successMessage = document.getElementById("successMessage");
+
+
 const firstNameInput = document.getElementById("firstName");
 const firstNameError = document.getElementById("errorFirstName");
 const firstNameGeneral = document.querySelector("[data-field='firstName']");
@@ -20,13 +23,16 @@ const messageError = document.getElementById("errorMessage");
 const messageGeneral = document.querySelector("[data-field='messageInput']");
 
 //const consentSelected = document.getElementById("consent");
-const consentError = document.getElementById("errorConsent")
-const consentGeneral = document.querySelector("[datafield='consent']");
+const consentSelected = document.getElementById("consent");
+const consentError = document.getElementById("errorConsent");
+const consentGeneral = document.querySelector("[data-field='consent']");
 
 
 
 form.addEventListener("submit", function (event) {
     event.preventDefault();
+
+    let isFormValid = true;
 
     //First Name
     const firstName = firstNameInput.value.trim();
@@ -34,6 +40,7 @@ form.addEventListener("submit", function (event) {
     if (firstName === ""){
         firstNameError.textContent = "This field is required";
         firstNameGeneral.classList.add("is-error");
+        isFormValid =false;
     } else {
         firstNameError.textContent= "";
         firstNameGeneral.classList.remove("is-error");
@@ -45,6 +52,7 @@ form.addEventListener("submit", function (event) {
     if (lastName === "") {
         lastNameError.textContent = "This field is required";
         lastNameGeneral.classList.add("is-error");
+        isFormValid =false;
     } else {
         lastNameError.textContent = "";
         lastNameGeneral.classList.remove("is-error");
@@ -56,9 +64,11 @@ form.addEventListener("submit", function (event) {
     if (email === "") {
         emailError.textContent = "This field is required";
         emailGeneral.classList.add("is-error");
+        isFormValid =false;
     }else if (!email.includes("@")) {
         emailError.textContent = "Please enter a valid email address";
         emailGeneral.classList.add("is-error");
+        isFormValid =false;
     }else {
         emailError.textContent = "";
         emailGeneral.classList.remove("is-error");
@@ -69,6 +79,7 @@ form.addEventListener("submit", function (event) {
 
     if (!selectedQuery) {
         queryError.textContent = "Please select a query type";
+        isFormValid =false;
     } else {
         queryError.textContent = "";
     }
@@ -79,20 +90,41 @@ form.addEventListener("submit", function (event) {
     if (message === "") {
         messageError.textContent = "This field is required";
         messageGeneral.classList.add("is-error");
+        isFormValid =false;
     }else {
         messageError.textContent = "";
         messageGeneral.classList.remove("is-error");
     }
 
-    const consentSelected = document.querySelector("input[name='consent']:checked")
 
-    if (!consentSelected) {
+    if (!consentSelected.checked) {
         consentError.textContent = "To submit this form, please consent to being contacted";
         consentGeneral.classList.add("is-error");
+        isFormValid =false;
     } else {
         consentError.textContent = "";
         consentGeneral.classList.remove("is-error");
     }
+
+    if (isFormValid) {
+        successMessage.style.display = "block";
+
+        form.reset();
+
+        document.querySelectorAll(".is-error").forEach((general) => {
+            general.classList.remove("is-error");
+        });
+
+        document.querySelectorAll(".is-error").forEach((msg) => {
+            msg.textContent = "";
+        });
+
+        setTimeout(() => {
+            successMessage.style.display = "none";
+        }, 3000);
+    }
 });
+
+//continue with color for consent error message
 
 
